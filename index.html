@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Highlight Animation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: radial-gradient(circle, rgba(240, 245, 255, 1), rgba(200, 220, 255, 1));
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 250px;
+            height: 250px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: bounceIn 1.5s ease-out forwards;
+        }
+
+        .logo-container img {
+            width: 150px;
+            height: 150px;
+            animation: logoFocus 4s ease-in-out forwards;
+        }
+
+        /* Subtle pulse effect to highlight the logo */
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            80% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes logoFocus {
+            0% {
+                transform: scale(1);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 1;
+            }
+            80% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Soft glowing ring surrounding the logo for emphasis */
+        .glow-ring {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+            opacity: 0;
+            animation: glowingRing 3s ease-out forwards;
+            z-index: -1;
+        }
+
+        @keyframes glowingRing {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Glowing text animation to accompany the logo */
+        .logo-text {
+            position: absolute;
+            top: 75%;
+            font-size: 1.8rem;
+            color: #333;
+            opacity: 0;
+            animation: fadeInText 2.5s 1.5s ease-out forwards;
+            text-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeInText {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Circular ripple effect */
+        .ripple {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(100, 150, 255, 0.2), transparent);
+            opacity: 0;
+            animation: rippleEffect 3s 1.5s ease-out forwards;
+            z-index: -1;
+        }
+
+        @keyframes rippleEffect {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Subtle fade out before redirect */
+        .fade-out {
+            animation: fadeOutEffect 1s ease-in-out forwards;
+        }
+
+        @keyframes fadeOutEffect {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="logo-container">
+        <img src="https://i0.wp.com/depedgentri.com/wp-content/uploads/2019/10/received_338969793491402.png?fit=300%2C300&ssl=1" alt="School Logo">
+        <div class="glow-ring"></div>
+        <div class="ripple"></div>
+    </div>
+
+    <div class="logo-text">Technical Assistance Portal</div>
+
+    <script>
+        // Redirect to index.html after the animation completes
+        setTimeout(function() {
+            document.body.classList.add('fade-out');
+            setTimeout(function() {
+                window.location.href = 'main.html';
+            }, 1000);  // Wait for the fade-out effect before redirecting
+        }, 4000);  // Adjust this value based on the total duration of the animation
+    </script>
+</body>
+</html>
